@@ -8,17 +8,14 @@ rankHospital <- function(state, outcome, num) {
   
    # creating a csv data file 
    data <- read.csv(file = "Datasets/outcome-of-care-measures.csv", colClasses = "character")
-  
-   # subsetting a data for a particular state
+  # subsetting a data for a particular state
    data_1 <- subset(data, data$State == state)
-  
-   # if the subsetted the data_1 has zero rows than the state is invalid as all the states have a more than one row
+  # if the subsetted the data_1 has zero rows than the state is invalid as all the states have a more than one row
    if(nrow(data_1) <=  0)
      {
       stop("INVALID STATE")
      }
-  
-   # validating the outcome parameter   
+  # validating the outcome parameter   
    if(outcome != "Heart Attack" & outcome != "Heart Failure" & outcome != "Pneumonia")
      {
        stop("INVALID OUTCOME")
@@ -84,7 +81,6 @@ rankHospital <- function(state, outcome, num) {
    # if the outcome value is Pneumonia
    else
      {
-    
       # creating a data frame with hospital name and death mortality rate column
       data_output <- data.frame(data_1$Hospital.Name, data_1$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)
       # ordering the dataframe based on death mortality rate and storing in the output vector
@@ -116,7 +112,6 @@ rankHospital <- function(state, outcome, num) {
       }
   
  }
-
 
 # test code to check the accuracy of the function
 rankHospital("MD","Heart Attack", 1)
